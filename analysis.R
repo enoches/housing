@@ -19,8 +19,10 @@ commune_level_data <- commune_level_data %>%
   mutate(p0_m2 = ifelse(year == "2010", average_price_m2_nominal_euros, NA)) %>%
   fill(p0_m2, .direction = "down") %>%
   ungroup() %>%
-  mutate(pl = average_price_nominal_euros/p0*100,
-         pl_m2 = average_price_m2_nominal_euros/p0_m2*100)
+  mutate(
+    pl = average_price_nominal_euros / p0 * 100,
+    pl_m2 = average_price_m2_nominal_euros / p0_m2 * 100
+  )
 
 
 #Let's also compute it for the whole country:
@@ -30,18 +32,22 @@ country_level_data <- country_level_data %>%
   fill(p0, .direction = "down") %>%
   mutate(p0_m2 = ifelse(year == "2010", average_price_m2_nominal_euros, NA)) %>%
   fill(p0_m2, .direction = "down") %>%
-  mutate(pl = average_price_nominal_euros/p0*100,
-         pl_m2 = average_price_m2_nominal_euros/p0_m2*100)
+  mutate(
+    pl = average_price_nominal_euros / p0 * 100,
+    pl_m2 = average_price_m2_nominal_euros / p0_m2 * 100
+  )
 
 
 #We are going to create a plot for 5 communes and compare the price evolution in the communes
 #to the national price evolution. Let's first list the communes:
 
-communes <- c("Luxembourg",
-              "Esch-sur-Alzette",
-              "Mamer",
-              "Schengen",
-              "Wincrange")
+communes <- c(
+  "Luxembourg",
+  "Esch-sur-Alzette",
+  "Mamer",
+  "Schengen",
+  "Wincrange"
+)
 
 # Luxembourg
 
@@ -54,10 +60,14 @@ data_to_plot <- bind_rows(
 )
 
 lux_plot <- ggplot(data_to_plot) +
-  geom_line(aes(y = pl_m2,
-                x = year,
-                group = locality,
-                colour = locality))
+  geom_line(
+    aes(
+      y = pl_m2,
+      x = year,
+      group = locality,
+      colour = locality
+    )
+  )
 
 
 # Esch sur Alzette
@@ -71,10 +81,14 @@ data_to_plot <- bind_rows(
 )
 
 esch_plot <- ggplot(data_to_plot) +
-  geom_line(aes(y = pl_m2,
-                x = year,
-                group = locality,
-                colour = locality))
+  geom_line(
+    aes(
+      y = pl_m2,
+      x = year,
+      group = locality,
+      colour = locality
+    )
+  )
 
 # Mamer
 
@@ -87,10 +101,14 @@ data_to_plot <- bind_rows(
 )
 
 mamer_plot <- ggplot(data_to_plot) +
-  geom_line(aes(y = pl_m2,
-                x = year,
-                group = locality,
-                colour = locality))
+  geom_line(
+    aes(
+      y = pl_m2,
+      x = year,
+      group = locality,
+      colour = locality
+    )
+  )
 
 # Schengen
 
@@ -103,10 +121,14 @@ data_to_plot <- bind_rows(
 )
 
 schengen_plot <- ggplot(data_to_plot) +
-  geom_line(aes(y = pl_m2,
-                x = year,
-                group = locality,
-                colour = locality))
+  geom_line(
+    aes(
+      y = pl_m2,
+      x = year,
+      group = locality,
+      colour = locality
+    )
+  )
 
 # Wincrange
 
@@ -119,10 +141,14 @@ data_to_plot <- bind_rows(
 )
 
 wincrange_plot <- ggplot(data_to_plot) +
-  geom_line(aes(y = pl_m2,
-                x = year,
-                group = locality,
-                colour = locality))
+  geom_line(
+    aes(
+      y = pl_m2,
+      x = year,
+      group = locality,
+      colour = locality
+    )
+  )
 
 # Let's save the plots
 ggsave("plots/lux_plot.pdf", lux_plot)

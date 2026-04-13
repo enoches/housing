@@ -10,6 +10,8 @@ knitr::opts_chunk$set(echo = TRUE)
 # About
 Exercise from: [Building reproducible analytical pipelines with R](https://raps-with-r.dev/github.html) by Bruno Rodrigues
 
+O objetivo deste exercício é criar um pipeline de análise reprodutível usando o R para baixar, limpar e analisar dados de preços de habitação em Luxemburgo. Usar também o Git/GitHub para versionar o código e compartilhar os resultados.
+
 
 # Housing data for Luxembourg
 
